@@ -31,6 +31,6 @@ export const theme = {
     regular: fontConfig.default.regular,
     medium: fontConfig.default.medium,
     light: fontConfig.default.light,
-    thin: fontConfig.default.bold,
+    bold: fontConfig.default.bold,
   },
 };

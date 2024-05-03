@@ -1,0 +1,1 @@
+export {supabseShoppingListsQuery} from './supabseShoppingListsQuery';
