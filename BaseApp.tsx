@@ -1,13 +1,38 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {LinkingOptions, NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {PaperProvider} from 'react-native-paper';
 import App from './App';
 import {theme} from './src/theme/theme';
+import {RootStackParamList} from './src/screens/RootScreen';
+
+const linking: LinkingOptions<RootStackParamList> = {
+  prefixes: ['shoppinglist://'],
+  config: {
+    screens: {
+      Authenticated: {
+        path: 'Authenticated',
+        screens: {
+          BottomTabNavigationStack: {
+            path: 'ShoppingLists',
+          },
+        },
+      },
+      Unauthenticated: {
+        path: 'Unauthenticated',
+        screens: {
+          Login: {
+            path: 'Login',
+          },
+        },
+      },
+    },
+  },
+};
 
 const BaseApp = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <SafeAreaProvider>
         <PaperProvider theme={theme}>
           <App />

@@ -1,11 +1,13 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import ShoppingListsScreen from './ShoppingListScreen';
+import BottomTabNavigationStack from './ShoppingListsStack';
+import ShoppingListScreen from './ShoppingListScreen';
 
 export type MainStackParamList = {
-  ShoppingLists: undefined;
-  ShoppingList: undefined;
-  Profile: undefined;
+  BottomTabNavigationStack: undefined;
+  ShoppingList: {
+    id: number;
+  };
 };
 
 const Stack = createStackNavigator<MainStackParamList>();
@@ -14,14 +16,13 @@ const MainStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="ShoppingLists"
-        component={ShoppingListsScreen}
+        name="BottomTabNavigationStack"
+        component={BottomTabNavigationStack}
         options={{
-          headerTitle: 'Moje listy zakupów',
+          headerShown: false,
         }}
       />
-      <Stack.Screen name="ShoppingList" component={ShoppingListsScreen} />
-      <Stack.Screen name="Profile" component={ShoppingListsScreen} />
+      <Stack.Screen name="ShoppingList" component={ShoppingListScreen} />
     </Stack.Navigator>
   );
 };

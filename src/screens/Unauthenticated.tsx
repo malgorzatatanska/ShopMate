@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import ShoppingListsScreen from './ShoppingListScreen';
+import {Login} from './Login';
 
 export type UnauthenticatedStackParamList = {
   Login: undefined;
@@ -11,9 +11,21 @@ const Stack = createStackNavigator<UnauthenticatedStackParamList>();
 
 const Unauthenticated = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Login" component={ShoppingListsScreen} />
-      <Stack.Screen name="Register" component={ShoppingListsScreen} />
+    <Stack.Navigator initialRouteName="Login">
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={Login}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
 };
